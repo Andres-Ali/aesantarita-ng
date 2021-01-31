@@ -1,0 +1,81 @@
+
+<div class="container">
+
+  <div class="row"> <!-- Encabezado -->
+    <h1 class="text-center pt-3">Grupos</h1><hr>
+  </div>
+
+  <div class="row" cdkDropListGroup>
+
+    <div class="col"> <!-- Tarjetas -->
+
+      <div class="row mx-2"> <!-- Encabezado -->
+        <h2 class="text-center">Tarjetas</h2><hr>
+      </div>
+
+      <div class="row m-2"> <!-- Buscador -->
+        <div class="form-floating p-0 py-2">
+          <input type="text" class="form-control" id="busca" placeholder="Buscar.." [(ngModel)]="filterGroup" name="filterGroup">
+          <label for="busca">Buscar..</label>
+        </div>
+      </div>
+      
+      <div class="row px-3"> <!-- Cards -->
+
+        <div cdkDropList [cdkDropListData]="listGrupos" class="card-box border">
+          <div class="card card-header m-3 tarjeta-box" *ngFor="let grupo of listGrupos | filter: filterGroup" cdkDrag >{{grupo.name}}</div>
+        </div>
+
+      </div>
+
+    </div>
+  
+    <div class="col"> <!-- Lista -->
+
+      <div class="row mx-2"> <!-- Encabezado -->
+        <h2 class="text-center">Empleados{{seletedGrup? ' - ' + seletedGrup:''}}</h2><hr>
+      </div>
+
+      <div class="row justify-content-between p-2"> <!-- Cheked&Delete -->
+
+        <div class="col-2"> <!-- Cheked -->
+          <div class="form-check">
+            <input class="form-check-input" id="flexCheckAll" type="checkbox" [(ngModel)]="checked" value="{{checked}}" (change)="checkUncheckAll()" />
+            <label class="form-check-label" style="min-width: max-content;"  for="flexCheckAll">
+              Seleccionar todos
+            </label>
+          </div>
+        </div>
+
+        <div class="col-2"> <!-- Delete -->
+          <button class="btn btn-primary" (click)="deleteCard()">Borrar</button>
+        </div>
+
+      </div>
+
+      <div class="row px-3"> 
+        
+        <div cdkDropList [cdkDropListData]="listEmpleados" class="card-box border" (cdkDropListDropped)="drop($event)">
+            
+          <ul>
+              <li class="card card-body m-3" style="height: 50px;" *ngFor="let empleado of listEmpleados" >
+                
+                <div class="form-check">
+                  <input class="form-check-input" id="flexCheckDefault" type="checkbox" [(ngModel)]="empleado.isSelected" value="{{empleado.isSelected}}" />
+                  <label class="form-check-label"  for="flexCheckDefault">
+                    {{empleado.name + ' ' + empleado.last_name }}
+                  </label>
+                </div>
+                
+              </li>
+          </ul>
+
+        </div>
+  
+      </div>
+  
+    </div>
+
+  </div>
+
+</div>

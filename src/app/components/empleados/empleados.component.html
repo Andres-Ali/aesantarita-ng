@@ -1,0 +1,95 @@
+<div class="container">
+
+  <div class="row"> <!-- Encabezado -->
+    <h1 class="text-center pt-3">Empleados</h1><hr>
+  </div>
+
+  <div class="row">
+
+    <div class="col">
+      
+      <div class="row">
+        <h2 class="text-center">Lista de Empleados</h2><hr>
+      </div>
+
+      <div class="row"> <!-- Buscador -->
+        <div class="form-floating p-0 py-2">
+          <input type="text" class="form-control" id="buscador" placeholder="Buscar.." [(ngModel)]="filterpost" name="filterpost">
+          <label for="buscador">Buscar..</label>
+        </div>
+        <!-- <input type="text" class="forms-control" placeholder="Buscar.." [(ngModel)]="filterpost" name="filterpost"/> -->
+      </div>
+
+      <div class="row"> <!-- Tabla -->
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">APELLIDO</th>
+              <th scope="col">FECHA NACIMIENTO</th>
+              <th scope="col">GRUPO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let empleado of listEmpleados | filter: filterpost | paginate: { itemsPerPage: 10, currentPage: page }">
+              <td>{{ empleado.id_employee }}</td>
+              <td>{{ empleado.name }}</td>
+              <td>{{ empleado.last_name }}</td>
+              <td>{{ empleado.birthday | date:'dd/MM/yyyy'}}</td>
+              <td>{{ empleado.developer_group }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+
+      <div class="row">
+        <!-- Paginacion -->
+        <pagination-controls class="mypage" (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+      </div>
+      
+    </div>
+
+    <div class="col">
+
+      <div class="row mx-2">
+        <h2 class="text-center">Formulario Empleados</h2><hr>
+      </div>
+
+      <!-- Formulario -->
+      <form [formGroup]="empleadosForm" (ngSubmit)="enviarEmpleado(empleadosForm.value)">
+
+        <div class="form-floating p-2">
+          <input type="text" class="form-control" formControlName="name" id="floatingName" placeholder="Nombre:">
+          <label for="floatingName">Nombre:</label>
+        </div>
+
+        <div class="form-floating p-2">
+          <input type="text" class="form-control" formControlName="last_name" id="floatingLast" placeholder="Apellidos:">
+          <label for="floatingLast">Apellidos:</label>
+        </div>
+
+        <div class="form-floating p-2">
+          <input type="date" class="form-control" id="floatingDate" formControlName="birthday">
+          <label for="floatingDate">Fecha Nacimiento:</label>
+        </div>
+
+        <div class="form-floating p-2">
+          <select class="form-select" formControlName="developer_group" id="floatingGroup">
+              <option *ngFor="let dev of dev_group" [ngValue]="dev">{{dev}}</option>
+          </select>
+          <label for="floatingGroup">Grupo:</label>
+        </div>
+        
+        <div class="row m-2">
+          <button [disabled]="empleadosForm.invalid" class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+      
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

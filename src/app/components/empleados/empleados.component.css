@@ -1,0 +1,9 @@
+.mypage /deep/ .ngx-pagination .current {
+  background: #b72c1a;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #b72c1a !important;
+}
+
+

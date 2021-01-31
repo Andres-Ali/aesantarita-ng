@@ -1,0 +1,19 @@
+.card-box {
+  height: 30vw; width: 100%;
+  overflow:hidden; overflow-y:scroll;
+  border-color: gray;
+}
+
+.tarjeta-box {
+  height: 150px; max-height: 250px; border-width: 2px;
+  text-align: center;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #b72c1a !important;
+}
+
+.form-check-input {
+  background-color: #b72c1a !important;
+  border-color: white;
+}
