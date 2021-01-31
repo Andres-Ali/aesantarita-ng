@@ -1,6 +1,23 @@
 # Aesantarita
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 11.1.2.
+
+Paquetes necesarios:
+
+* Npm v6.14.11
+
+* Node.js® v14.15.4
+
+* Angular material v11.1.1
+
+* ngx-pagination v5.0.0
+
+* Bootstrap v5.0.0-beta1
+
+Para instalar todos los paquetes, favor de ejecutar `npm install` en la carpeta del proyecto con la ventana de comandos.
+
+Para una visualización rápida, el proyecto se encuentra en el sitio: https://aesantarita.netlify.app
+
 
 ## Development server
 
